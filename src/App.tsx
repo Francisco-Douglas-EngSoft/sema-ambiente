@@ -29,7 +29,7 @@ const App = () => (
               <Route path="/" element={<LandingPage />} />
               <Route path="/login" element={<Index />} />
               <Route path="/portal" element={<PublicPortal />} />
-              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+              {/* Catch-all: página não encontrada */}
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>
