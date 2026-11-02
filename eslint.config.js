@@ -23,4 +23,36 @@ export default tseslint.config(
       "@typescript-eslint/no-unused-vars": "off",
     },
   },
+  // Serviços Supabase: o cliente tipado não suporta joins relacionais dinâmicos,
+  // por isso o cast `as any` é necessário nestes arquivos.
+  {
+    files: [
+      "src/services/**/*.ts",
+      "src/contexts/AuthContext.tsx",
+      "src/pages/Denuncias.tsx",
+      "src/pages/Licencas.tsx",
+      "src/pages/Equipe.tsx",
+      "src/pages/LoginPage.tsx",
+      "src/pages/PublicPortal.tsx",
+      "src/components/settings/SeedDataManager.tsx",
+      "supabase/functions/**/*.ts",
+    ],
+    rules: {
+      "@typescript-eslint/no-explicit-any": "off",
+    },
+  },
+  // Componentes shadcn/ui gerados automaticamente — interfaces vazias são padrão do template.
+  {
+    files: ["src/components/ui/**/*.tsx"],
+    rules: {
+      "@typescript-eslint/no-empty-object-type": "off",
+    },
+  },
+  // tailwind.config.ts usa require() pois o plugin não tem tipos ESM.
+  {
+    files: ["tailwind.config.ts"],
+    rules: {
+      "@typescript-eslint/no-require-imports": "off",
+    },
+  },
 );
